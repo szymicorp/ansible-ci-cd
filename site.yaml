@@ -1,0 +1,11 @@
+---
+- name: My test play
+  hosts: test:prod
+  gather_facts: false
+  tasks:
+    - name: List files
+      command: ls -la
+
+    - name: Show user
+      debug:
+        var: x

@@ -1,0 +1,29 @@
+---
+all:
+  vars:
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+    ansible_python_interpreter: /usr/bin/python3.10
+    ansible_user: ansible
+    ansible_password: pass
+  children:
+    test:
+      vars:
+        x: 1
+      hosts:
+        ansible-ci-cd-app-1:
+        ansible-ci-cd-app-2:
+    prod:
+      vars: 
+        x: 0
+      hosts:
+        ansible-ci-cd-app-3:
+        ansible-ci-cd-app-4:
+  hosts:
+    ansible-ci-cd-app-1:
+      ansible_host: 172.20.0.6
+    ansible-ci-cd-app-2:
+      ansible_host: 172.20.0.7
+    ansible-ci-cd-app-3:
+      ansible_host: 172.20.0.3
+    ansible-ci-cd-app-4:
+      ansible_host: 172.20.0.4
