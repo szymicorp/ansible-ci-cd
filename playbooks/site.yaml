@@ -54,7 +54,7 @@
   tasks:
     - name: Pull from git on control node
       ansible.builtin.git: &git-clone
-        repo: https://bitbucket.org/shkroba/simple-http.git
+        repo: https://github.com/RdzanekMateusz/diabetes.git
         dest: "{{ app_dir }}"
         depth: 1
         single_branch: true
@@ -64,7 +64,7 @@
       delegate_to: localhost
       register: pull_result
 
-    - when: pull_result is changed
+    - when: true
       block:
         - run_once: true
           delegate_to: localhost
